@@ -23,8 +23,12 @@ function App() {
         <h2 className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
-          {data.map(()=>(
-             <Guitar />
+
+          {data.map(()=>( 
+             <Guitar 
+              price={100}
+              auth={true}
+             />
           ))}
          
         </div>
