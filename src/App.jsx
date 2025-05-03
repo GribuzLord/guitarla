@@ -1,14 +1,19 @@
 import Header from "./components/Header"
 import Guitar from "./components/Guitar"
-import { useState } from "react"
+import { useState,useEffect } from "react"
+import { use } from "react"
+import { db } from "./data/db"
 
 
 function App() {
 
 
   //State
-  const [auth,setAuth]=useState(false)
-  console.log(auth);
+  const [auth,setAuth]=useState(false) //El que modifica el estado es la variable de la derecha (setAuth)
+
+  const [data,setData]=useState(db)
+
+
   return (
     <>
      <Header />   {/*Invocacion del componente */}
