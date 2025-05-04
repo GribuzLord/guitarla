@@ -23,11 +23,11 @@ function App() {
         <h2 className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
-
-          {data.map(()=>( 
+      {/* Un prop es la manera en la que se comunican entre si los diferentes componentes de react */}
+          {data.map((guitar)=>( 
              <Guitar 
-              price={100}
-              auth={true}
+              key={guitar.id}
+              guitar={guitar}
              />
           ))}
          
