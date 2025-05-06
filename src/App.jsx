@@ -46,6 +46,19 @@ function App() {
     setCart(updatedCart)
   }
 
+  function decreaseQuantity(id){
+    const updatedCart=cart.map(item=>{
+      if(item.id===id && item.quantity>1){
+        return{
+          ...item,
+          quantity:item.quantity-1
+        }
+      }
+      return item
+    })
+    setCart(updatedCart)
+  }
+
 
   return (
     <>
@@ -55,6 +68,7 @@ function App() {
       cart={cart}
       removeFromCart={removeFromCart}
       increaseQuantity={increaseQuantity}
+      decreaseQuantity={decreaseQuantity}
      />   {/*Invocacion del componente */}
     
 
