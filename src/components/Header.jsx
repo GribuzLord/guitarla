@@ -3,6 +3,7 @@ export default function Header({cart}){
 
     //State derivado
     const isEmpty = () => cart.length === 0
+    const cartTotal=()=>cart.reduce((total,item)=>total+(item.quantity*item.price),0)
 
     return (//Lo que esta en el return se muestra en pantalla
         <header className="py-5 header">
@@ -24,6 +25,7 @@ export default function Header({cart}){
                             {isEmpty()?(
                                 <p className="text-center">El carrito esta vacio</p>
                             ):(
+                            <>
                             <table className="w-100 table">
                                 <thead>
                                     <tr>
@@ -71,8 +73,10 @@ export default function Header({cart}){
                                     ))}
                                 </tbody>
                             </table>
+
+                            <p className="text-end">Total pagar: <span className="fw-bold">${cartTotal()}</span></p>
+                            </>
                              )}
-                            <p className="text-end">Total pagar: <span className="fw-bold">$899</span></p>
                             <button className="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
                         </div>
                     </div>
