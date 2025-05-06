@@ -9,9 +9,7 @@ function App() {
 
 
   //State
-  const [auth,setAuth]=useState(false) //El que modifica el estado es la variable de la derecha (setAuth)
-
-  const [data,setData]=useState(db)
+  const [data,setData]=useState(db) //El que modifica el estado es la variable de la derecha (setAuth)
   const [cart,setCart]=useState([])
 
   function addToCart(item){
@@ -27,7 +25,10 @@ function App() {
       item.quantity=1
       setCart([...cart,item])
     }
+  }
 
+  function removeFromCart(id){
+    setCart(prevCart=>prevCart.filter(guitar=>guitar.id!==id))
   }
 
 
@@ -37,6 +38,7 @@ function App() {
 
      <Header 
       cart={cart}
+      removeFromCart={removeFromCart}
      />   {/*Invocacion del componente */}
     
 
