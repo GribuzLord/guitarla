@@ -12,6 +12,8 @@ function App() {
   const [auth,setAuth]=useState(false) //El que modifica el estado es la variable de la derecha (setAuth)
 
   const [data,setData]=useState(db)
+  const [cart,setCart]=useState([])
+
 
 
   return (
@@ -30,6 +32,7 @@ function App() {
              <Guitar 
               key={guitar.id}
               guitar={guitar}
+              setCart={setCart}
              />
           ))}
          
