@@ -8,6 +8,8 @@ import { db } from "./data/db"
 function App() {
 
 
+  const MAXITEMS=5
+
   //State
   const [data,setData]=useState(db) //El que modifica el estado es la variable de la derecha (setAuth)
   const [cart,setCart]=useState([])
@@ -31,6 +33,19 @@ function App() {
     setCart(prevCart=>prevCart.filter(guitar=>guitar.id!==id))
   }
 
+  function increaseQuantity(id){
+    const updatedCart=cart.map(item=>{
+      if(item.id===id && item.quantity<MAXITEMS){
+        return{
+          ...item,
+          quantity:item.quantity+1
+        }
+      }
+      return item
+    })
+    setCart(updatedCart)
+  }
+
 
   return (
     <>
@@ -39,6 +54,7 @@ function App() {
      <Header 
       cart={cart}
       removeFromCart={removeFromCart}
+      increaseQuantity={increaseQuantity}
      />   {/*Invocacion del componente */}
     
 
