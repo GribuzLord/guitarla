@@ -7,14 +7,19 @@ import { db } from "./data/db"
 
 function App() {
 
+  const initialCart = () => {
+    const localStorageCart=localStorage.getItem('cart') //Busca en local storage
+
+    return localStorageCart ? JSON.parse(localStorageCart) : [] //Si tiene algo convierte ese valor y si no el valor inicial esta vacio
+  }
 
   //State
   const [data,setData]=useState(db) //El que modifica el estado es la variable de la derecha (setAuth)
-  const [cart,setCart]=useState([])
+  const [cart,setCart]=useState(initialCart)
 
   const MAXITEMS=5
 
-  useEffect(()=>{
+  useEffect(()=>{//Similar a la funcion watch, va a ejecutar lo que este dentro cada que detecte cambios en cierto componente
     localStorage.setItem('cart',JSON.stringify(cart));
   },[cart])
 
