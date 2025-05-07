@@ -1,7 +1,6 @@
 import Header from "./components/Header"
 import Guitar from "./components/Guitar"
 import { useState,useEffect } from "react"
-import { use } from "react"
 import { db } from "./data/db"
 
 
@@ -14,7 +13,7 @@ function App() {
   }
 
   //State
-  const [data,setData]=useState(db) //El que modifica el estado es la variable de la derecha (setAuth)
+  const [data]=useState(db) //El que modifica el estado es la variable de la derecha (setAuth)
   const [cart,setCart]=useState(initialCart)
 
   const MAXITEMS=5
