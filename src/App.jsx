@@ -8,11 +8,17 @@ import { db } from "./data/db"
 function App() {
 
 
-  const MAXITEMS=5
-
   //State
   const [data,setData]=useState(db) //El que modifica el estado es la variable de la derecha (setAuth)
   const [cart,setCart]=useState([])
+
+  const MAXITEMS=5
+
+  useEffect(()=>{
+    localStorage.setItem('cart',JSON.stringify(cart));
+  },[cart])
+
+
 
   function addToCart(item){
 
@@ -60,9 +66,11 @@ function App() {
     setCart(updatedCart)
   }
 
-  function clearCart(){
+  function clearCart(e){
     setCart([])
   }
+
+
 
 
   return (
